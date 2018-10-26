@@ -2,6 +2,9 @@
 
 A native Windows API binding to control the default audio device. Supports set/get the volume and get the muted state and set the muted state.
 
+[![npm](https://img.shields.io/npm/dm/node-volume-windows.svg)](https://www.npmjs.com/package/node-volume-windows)
+[![npm](https://img.shields.io/npm/v/node-volume-windows.svg)](https://www.npmjs.com/package/node-volume-windows)
+
 ## How to Use
 ```javascript
 const { volume } = require('node-volume-windows');
