@@ -1,7 +1,7 @@
 {
   "name": "node-volume-windows",
   "version": "1.0.0",
-  "description": "Windows volume controller for nodejs",
+  "description": "Native Node.js volume controls for Windows",
   "main": "index.js",
   "os": ["win32"],
   "gypfile": true,
@@ -15,7 +15,8 @@
   "keywords": [
     "node",
     "windows",
-    "volume"
+    "volume",
+    "audio"
   ],
   "author": "Jarno Lonardi",
   "license": "MIT",
