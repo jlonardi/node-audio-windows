@@ -1,0 +1,33 @@
+{
+  "name": "node-volume-windows",
+  "version": "1.0.0",
+  "description": "Windows volume controller for nodejs",
+  "main": "index.js",
+  "os": ["win32"],
+  "gypfile": true,
+  "scripts": {
+    "install": "node-gyp rebuild"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jlonardi/node-volume-windows.git"
+  },
+  "keywords": [
+    "node",
+    "windows",
+    "volume"
+  ],
+  "author": "Jarno Lonardi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jlonardi/node-volume-windows/issues"
+  },
+  "homepage": "https://github.com/jlonardi/node-volume-windows#readme",
+  "dependencies": {
+    "nan": "^2.11.1",
+    "node-gyp": "^3.8.0"
+  },
+  "devDependencies": {
+    "chalk": "^2.4.1"
+  }
+}
