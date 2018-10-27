@@ -2,8 +2,8 @@
 
 A native Windows API binding to control the default audio device. Supports set/get the volume and get the muted state and set the muted state.
 
-[![npm](https://img.shields.io/npm/dm/node-volume-windows.svg)](https://www.npmjs.com/package/node-volume-windows)
-[![npm](https://img.shields.io/npm/v/node-volume-windows.svg)](https://www.npmjs.com/package/node-volume-windows)
+[![npm](https://img.shields.io/npm/dm/node-audio-windows.svg)](https://www.npmjs.com/package/node-audio-windows)
+[![npm](https://img.shields.io/npm/v/node-audio-windows.svg)](https://www.npmjs.com/package/node-audio-windows)
 
 ## How to Use
 ```javascript
@@ -21,7 +21,13 @@ setVolume(0.43);
 // to know if the system is muted
 isMuted();
 
-// to unmute/ mute
+// to mute
+setMute(true);
+
+// to unmute
+setMute(false);
+
+// to toggle mute
 setMute(!isMuted());
 ```
 #### Note
@@ -45,4 +51,4 @@ $ node demo.js
 
 ## Licence & Copyright
 Copyright (c) 2018 Jarno Lonardi
-The package `node-volume-windows` is licensed under MIT license.
+The package `node-audio-windows` is licensed under MIT license.

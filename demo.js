@@ -52,7 +52,7 @@ const drawBar = (current) => {
   const percentageProgress = (current * 100).toFixed(0);
   this.currentProgress = percentageProgress;
 
-  const filledBarLength = (current * barLength).toFixed(0);
+  const filledBarLength = isMuted() ? 0 : (current * barLength).toFixed(0);
 
 
   const emptyBarLength = barLength - filledBarLength;

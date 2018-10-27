@@ -1,16 +1,18 @@
 {
-  "name": "node-volume-windows",
+  "name": "node-audio-windows",
   "version": "1.0.0",
-  "description": "Native Node.js volume controls for Windows",
+  "description": "Native Node.js audio controls for Windows",
   "main": "index.js",
-  "os": ["win32"],
+  "os": [
+    "win32"
+  ],
   "gypfile": true,
   "scripts": {
     "install": "node-gyp rebuild"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jlonardi/node-volume-windows.git"
+    "url": "git+https://github.com/jlonardi/node-audio-windows.git"
   },
   "keywords": [
     "node",
@@ -21,9 +23,9 @@
   "author": "Jarno Lonardi",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jlonardi/node-volume-windows/issues"
+    "url": "https://github.com/jlonardi/node-audio-windows/issues"
   },
-  "homepage": "https://github.com/jlonardi/node-volume-windows#readme",
+  "homepage": "https://github.com/jlonardi/node-audio-windows#readme",
   "dependencies": {
     "nan": "^2.11.1",
     "node-gyp": "^3.8.0"
