@@ -28,9 +28,8 @@ IAudioEndpointVolume* getVolumeCOM() {
   );
 
   if (hr != S_OK) {
-    std::cout << "Error when trying to get a handle to MMDeviceEnumerator device enumerator: " << hr << std::endl;
     CoUninitialize();
-    return NULL;
+    throw "Error when trying to get a handle to MMDeviceEnumerator device enumerator: " + hr;
   }
 
   // Device interface pointer where we will dig the audio device endpoint
@@ -46,9 +45,8 @@ IAudioEndpointVolume* getVolumeCOM() {
   deviceEnumerator = NULL;     // Clear the pointer
 
   if (hr != S_OK) {
-    std::cout << "Error when trying to get a handle to the default audio enpoint: " << hr << std::endl;
     CoUninitialize();
-    return NULL;
+    throw "Error when trying to get a handle to the default audio enpoint: " + hr;
   }
 
   IAudioEndpointVolume *endpointVolume = NULL;
@@ -64,9 +62,8 @@ IAudioEndpointVolume* getVolumeCOM() {
   defaultDevice = NULL;     // Clear the pointer
 
   if (hr != S_OK) {
-    std::cout << "Error when trying to get a handle to the volume endpoint: " << hr << std::endl;
     CoUninitialize();
-    return NULL;
+    throw "Error when trying to get a handle to the volume endpoint: " + hr;
   }
 
   // Closes the COM library on the current thread, unloads all DLLs loaded by the thread, frees any other resources that the thread maintains, and forces all RPC connections on the thread to close.
@@ -85,10 +82,6 @@ void checkErrors(HRESULT hr, std::string action) {
 float setVolume(float vol) {
   float newVolume = vol;
   IAudioEndpointVolume *endpointVolume = getVolumeCOM();
-
-  if (endpointVolume == NULL) {
-    return vol;
-  }
 
   if (newVolume > 1.0) {
     newVolume = 1.0;
@@ -110,10 +103,6 @@ float getVolume () {
 
   IAudioEndpointVolume *endpointVolume = getVolumeCOM();
 
-  if (endpointVolume == NULL) {
-    return 0;
-  }
-
   checkErrors(
     endpointVolume->GetMasterVolumeLevelScalar(&currentVolume),
     "getting volume"
@@ -127,10 +116,6 @@ bool isMuted() {
 
   IAudioEndpointVolume *endpointVolume = getVolumeCOM();
 
-  if (endpointVolume == NULL) {
-    return muted;
-  }
-
   checkErrors(endpointVolume->GetMute(&muted), "getting muted state");
 
   return muted;
@@ -142,10 +127,6 @@ bool setMute(BOOL mute) {
   }
 
   IAudioEndpointVolume *endpointVolume = getVolumeCOM();
-
-  if (endpointVolume == NULL) {
-    return mute;
-  }
 
   checkErrors(endpointVolume->SetMute(mute, NULL), "setting mute");
 
