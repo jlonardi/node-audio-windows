@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "description": "Native Node.js audio controls for Windows",
   "main": "index.js",
+  "types": "index.d.ts",
   "os": [
     "win32"
   ],

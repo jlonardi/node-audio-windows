@@ -1,7 +1,6 @@
 const { bgWhite } = require('chalk');
 const readline = require('readline');
-const { volume } = require("./");
-const { getVolume, setVolume, isMuted, setMute } = volume;
+const { VolumeControl } = require("./");
 
 
 console.log('');
@@ -11,7 +10,7 @@ console.log('m          - mute/unmute');
 console.log('esc        - quit');
 console.log('');
 
-
+const volumeControl = new VolumeControl();
 
 
 readline.emitKeypressEvents(process.stdin);
@@ -22,20 +21,19 @@ process.stdin.on('keypress', (str, key) => {
     case 'escape':
       process.exit();
     case 'right':
-    case 'up': {
-      setVolume(getVolume() + 0.01);
+    case 'up':
+      volumeControl.setVolume(Math.min(1.0, volumeControl.getVolume() + 0.01));
       break;
-    }
     case 'down':
     case 'left':
-      setVolume(getVolume() - 0.01);
+      volumeControl.setVolume(Math.max(0.0, volumeControl.getVolume() - 0.01));
       break;
     case 'm': {
-      setMute(!isMuted());
+      volumeControl.setMuted(!volumeControl.isMuted());
       break;
     }
   }
-  drawBar(getVolume());
+  drawBar(volumeControl.getVolume());
 });
 
 
@@ -52,7 +50,7 @@ const drawBar = (current) => {
   const percentageProgress = (current * 100).toFixed(0);
   this.currentProgress = percentageProgress;
 
-  const filledBarLength = isMuted() ? 0 : (current * barLength).toFixed(0);
+  const filledBarLength = volumeControl.isMuted() ? 0 : (current * barLength).toFixed(0);
 
 
   const emptyBarLength = barLength - filledBarLength;
@@ -67,7 +65,7 @@ const drawBar = (current) => {
   if (percentageProgress < 10) {
     emoticon = '\u{1F508}';
   }
-  if (isMuted()) {
+  if (volumeControl.isMuted()) {
     emoticon = '\u{1F507}';
   }
 
@@ -76,4 +74,4 @@ const drawBar = (current) => {
   process.stdout.write(`${title}  ${emoticon}  [${filledBar}${emptyBar}] | ${percentageProgress}%            `);
 }
 
-drawBar(getVolume());
+drawBar(volumeControl.getVolume());
