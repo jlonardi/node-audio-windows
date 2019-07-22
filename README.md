@@ -7,7 +7,7 @@ A native Windows API binding to control the default audio device. Supports set/g
 
 ## How to Use
 ```javascript
-const { volume } = require('node-volume-windows');
+const { volume } = require('node-audio-windows');
 
 // the functions the volume controller exposes
 const { getVolume, setVolume, isMuted, setMute } = volume;
